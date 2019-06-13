@@ -47,13 +47,19 @@ document.onkeyup = function(event) {
         lives--;
         //guessCount displays new remaining lives value
         document.getElementById("guessCount").innerHTML = lives;
-        console.log("lives " + lives);
+        // ******************* incorrect guesses needs to show on page
+        wrongGuess = document.getElementById("wrongGuesses");
+        wrongGuess.textContent = userGuess;
+        
+
         
     }
     
     // statement for when lives reach 0
     if (lives < 1){
-
+        // computer makes a new random choice
+        compGuess = compChoices[Math.floor(Math.random() * compChoices.length)];
+        console.log("comp " + compGuess);
         //losses increments by 1
         losses++;
         //lives reset to 9
@@ -61,7 +67,7 @@ document.onkeyup = function(event) {
         //guessCount displays 'reset' lives value (9)
         document.getElementById("guessCount").innerHTML = lives;
         //lossCount displayes new losses value
-        document.getElementById("lossCount").innerHTML = losses;        
+        document.getElementById("lossCount").innerHTML = losses;
     }
     else {}
 
