@@ -25,6 +25,8 @@ document.onkeyup = function(event) {
 
     if (userGuess === compGuess) {
         document.getElementById("winCount").innerHTML = wins++;
+        compGuess = compChoices[Math.floor(Math.random() * compChoices.length)]; 
+        console.log(compGuess);
     }
 
     else {
