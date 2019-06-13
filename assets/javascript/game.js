@@ -4,13 +4,13 @@ var compChoices = ["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","
 // Randomly Chooses a choice from the compChoices array. This is the Computer's guess.
 var compGuess = compChoices[Math.floor(Math.random() * compChoices.length)]; 
 
-console.log(compGuess)
+console.log("comp " + compGuess);
 
-var wins = 1;
+var wins = 0;
 
-var losses = 1;
+var losses = 0;
 
-var lives = 8;
+var lives = 9;
 
 
 // This function is run whenever the user presses a key.
@@ -23,15 +23,47 @@ document.onkeyup = function(event) {
 
     // var userGuessLower = userGuess.toLowerCase;
 
+    // statement for if user guesses correctly
     if (userGuess === compGuess) {
-        document.getElementById("winCount").innerHTML = wins++;
-        compGuess = compChoices[Math.floor(Math.random() * compChoices.length)]; 
-        console.log(compGuess);
+
+        //wins increment by 1
+        wins++;
+        //winCount displays new wins value
+        document.getElementById("winCount").innerHTML = wins;
+        // computer makes a new random choice
+        compGuess = compChoices[Math.floor(Math.random() * compChoices.length)];
+        console.log("comp " + compGuess);
+        //lives reset to 9
+        lives = 9;
+        //guessCount displays 'reset' lives value (9)
+        document.getElementById("guessCount").innerHTML = lives;
+
     }
 
+    //statement for if user guesses incorrecly
     else {
-        document.getElementById("guessCount").innerHTML = lives--;
+
+        //lives decrements by 1
+        lives--;
+        //guessCount displays new remaining lives value
+        document.getElementById("guessCount").innerHTML = lives;
+        console.log("lives " + lives);
+        
     }
+    
+    // statement for when lives reach 0
+    if (lives < 1){
+
+        //losses increments by 1
+        losses++;
+        //lives reset to 9
+        lives = 9;
+        //guessCount displays 'reset' lives value (9)
+        document.getElementById("guessCount").innerHTML = lives;
+        //lossCount displayes new losses value
+        document.getElementById("lossCount").innerHTML = losses;        
+    }
+    else {}
 
 }
 
