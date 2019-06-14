@@ -12,6 +12,8 @@ var losses = 0;
 
 var lives = 9;
 
+// an empty array that will contain user's incorrect guesses
+var wrongList = [];
 
 // This function is run whenever the user presses a key.
 document.onkeyup = function(event) {
@@ -38,6 +40,11 @@ document.onkeyup = function(event) {
         //guessCount displays 'reset' lives value (9)
         document.getElementById("guessCount").innerHTML = lives;
 
+        //when the user make a correct guess the wrongList array is made empty
+        wrongList = [];
+        //this fetches the wrongGuesses id and sets it to be blank again
+        document.getElementById("wrongGuesses").innerHTML = "";
+
     }
 
     //statement for if user guesses incorrecly
@@ -47,9 +54,11 @@ document.onkeyup = function(event) {
         lives--;
         //guessCount displays new remaining lives value
         document.getElementById("guessCount").innerHTML = lives;
-        // ******************* incorrect guesses needs to show on page
-        wrongGuess = document.getElementById("wrongGuesses");
-        wrongGuess.textContent = userGuess;
+
+        //incorrect guesses are pushed to the wrongList array
+        wrongList.push(userGuess);
+        //this fetches the "wrongGuesses" 
+        document.getElementById("wrongGuesses").innerHTML = wrongList;
         
 
         
@@ -68,6 +77,11 @@ document.onkeyup = function(event) {
         document.getElementById("guessCount").innerHTML = lives;
         //lossCount displayes new losses value
         document.getElementById("lossCount").innerHTML = losses;
+
+        //when the user runs out of lives the wrongList array is made to be empty
+        wrongList = [];
+        //and the "wrongGuesses" id is set to be blank
+        document.getElementById("wrongGuesses").innerHTML = "";
     }
     else {}
 
